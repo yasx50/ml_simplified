@@ -1,5 +1,4 @@
 import User from '../models/User.js';
-import StudentProfile from '../models/Profile.js';
 
 /**
  * @desc Register a student with full details and avatar URL from middleware
@@ -12,37 +11,28 @@ const registerStudent = async (req, res) => {
       username,
       email,
       bio,
-      socialLinks,
-      interests
     } = req.body;
 
-    const avatar = req.avatarUrl; // From middleware like multer/s3
+    const avatar = req.avatarUrl || ''; // From middleware like multer/cloudinary
 
-    // Create user
+    // Create user with all fields
     const user = await User.create({
       name,
       username,
       email,
-      avatar
-    });
-
-    // Create student profile
-    const studentProfile = await StudentProfile.create({
-      userId: user.id,
+      avatar,
       bio,
-      socialLinks,
-      interests
+      progress: 0, // optional: you can accept it from req.body if needed
     });
 
     return res.status(201).json({
       message: 'Student registered successfully',
       user,
-      studentProfile
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error during registration:', error);
     return res.status(500).json({ error: 'Server error while registering student' });
   }
 };
 
-export default registerStudent
+export default registerStudent;

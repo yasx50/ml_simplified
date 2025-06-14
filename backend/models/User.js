@@ -1,34 +1,35 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import sequelize from '../database/Database_Connection.js';
 
-class User extends Model {}
-
-User.init(
-  {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    avatar: {
-      type: DataTypes.STRING, // URL or base64
-      defaultValue: '',
-    },
+const User = sequelize.define('User', {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-  {
-    sequelize,
-    modelName: 'User',
-    timestamps: true,
-  }
-);
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  avatar: {
+    type: DataTypes.STRING,
+    defaultValue: '',
+  },
+  bio: {
+    type: DataTypes.TEXT,
+    defaultValue: '',
+  },
+  progress: {
+    type: DataTypes.FLOAT,
+    defaultValue: 0,
+  },
+}, {
+  timestamps: true,
+});
 
 export default User;
