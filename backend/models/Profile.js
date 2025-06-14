@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/db.js';
-import User from './user.js';
+import sequelize from '../database/Database_Connection.js';
+import User from './User.js';
 
 class StudentProfile extends Model {}
 
