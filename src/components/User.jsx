@@ -66,13 +66,7 @@ export default function UserProfile() {
 
           <textarea name="bio" placeholder="Bio" value={formData.bio} onChange={handleChange} rows={4} className="p-2 rounded-md border border-gray-600 bg-[#121212] text-white w-full resize-y" />
 
-          <div>
-            <label className="block mb-1">Progress: {formData.progress}%</label>
-            <input type="range" name="progress" value={formData.progress} onChange={handleChange} min={0} max={100} className="w-full" />
-            <div className="h-2 bg-gray-700 rounded-full mt-1">
-              <div className="h-full bg-rose-400 rounded-full" style={{ width: `${formData.progress}%` }} />
-            </div>
-          </div>
+          
 
           <button type="submit" className="p-3 rounded-md bg-rose-400 text-black font-bold w-full">
             Save Profile
