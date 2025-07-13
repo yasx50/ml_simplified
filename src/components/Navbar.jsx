@@ -4,7 +4,7 @@ import { User } from 'lucide-react'; // optional icon, replace if needed
 
 const Navbar = () => {
   return (
-    <nav className="bg-black border-b-2 border-red-700 px-4 py-2">
+    <nav className="bg-black border-b-1 border-red-700 px-4 py-2">
       <div className="flex items-center justify-between text-red-700 silkscreen-regular">
         
         {/* Start: Red Box */}
