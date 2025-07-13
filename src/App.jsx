@@ -1,5 +1,7 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
+import Navbar from "./components/Navbar";
+import Main_Page from "./components/Main_Page";
 
 // import User from "./components/User";
 
@@ -7,6 +9,8 @@ import { Routes, Route } from 'react-router-dom';
 const App = () => {
   return (
     <>
+    <Navbar/>
+    <Main_Page/>
       </>
     
   );
