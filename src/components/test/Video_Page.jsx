@@ -22,10 +22,8 @@ const Video_Page = () => {
           </div>
 
           {/* Explanation Box */}
-          <div className="border border-gray-700 p-4 text-sm sm:text-base sarpanch-regular">
-            explain above video in your words
-          </div>
-          <textarea className='border border-gray-700 p-4 text-sm sm:text-base'></textarea>
+        
+          <textarea placeholder='explain above video in your words' className='border border-gray-700 p-4 text-sm sm:text-base sarpanch-regular'></textarea>
         </div>
 
         {/* Right Section */}

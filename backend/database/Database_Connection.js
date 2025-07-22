@@ -1,28 +1,20 @@
-import { Sequelize } from 'sequelize';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+const dbname = "mlsimplified"
 
-dotenv.config(); 
+dotenv.config();
 
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, 
-    },
-  },
-  logging: false, 
-});
-
-export const connectDB = async () => {
+const connectDB = async () => {
   try {
-    await sequelize.authenticate(); 
-    console.log('✅ Connected to PostgreSQL using Sequelize');
-  } catch (err) {
-    console.error('❌ Error connecting to PostgreSQL:', err.message);
-    throw err;
+    const conn = await mongoose.connect(`{$rocess.env.MONGO_URI}`/${dbname}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`❌ MongoDB Connection Error: ${error.message}`);
+    process.exit(1);
   }
 };
 
-export default sequelize; 
+export default connectDB;
